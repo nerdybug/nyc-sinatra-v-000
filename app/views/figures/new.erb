@@ -1,0 +1,21 @@
+<h1>Create a new Historical Figure</h1>
+<br>
+<form action="/figures" method="POST">
+  <p>Name: <input id="figure_name"type="text" name="figure[name]"></p>
+  <p>Title: <input id="new_title" type="text" name="title[name]"></p>
+  <p>or select an existing title:</p>
+  <% Title.all.each do |title| %>
+    <ul style="list-style: none">
+      <li><input id="title_<%= title.id%>" type="checkbox" name="figure[title_ids][]" value="<%= title.id %>"><%= title.name %></li>
+    </ul>
+  <%end%>
+  <p>Landmark Name: <input id="new_landmark"type="text" name="landmark[name]"></p>
+  <p>or select an existing landmark:</p>
+  <% Landmark.all.each do |landmark| %>
+  <ul style="list-style: none">
+    <li><input id="landmark_<%= landmark.id%>" type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"><%= landmark.name%></li>
+  </ul>
+  <% end %>
+  <p></p>
+  <input type="submit" value="Create New Figure">
+</form>
